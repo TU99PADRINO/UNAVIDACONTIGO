@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>UNA VIDA CONTIGO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&family=Sacramento&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #a7dcf0;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .flores-fondo {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .iniciales-fondo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #183b59;
+      font-family: 'Sacramento', cursive;
+      font-size: 180px;
+      line-height: 1;
+      -webkit-text-stroke: 0.8px #183b59;
+      text-shadow: 2px 3px 4px rgba(255, 255, 255, 0.35);
+      white-space: nowrap;
+    }
+
+    .flores-fondo img {
+      position: absolute;
+      width: 175px;
+      height: 175px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .flores-fondo img:nth-of-type(1) { top: 3%; left: -45px; }
+    .flores-fondo img:nth-of-type(2) { top: 22%; right: -52px; }
+    .flores-fondo img:nth-of-type(3) { top: 45%; left: -48px; }
+    .flores-fondo img:nth-of-type(4) { top: 68%; right: -45px; }
+    .flores-fondo img:nth-of-type(5) { top: 88%; left: 3%; width: 135px; height: 135px; }
+    .flores-fondo img:nth-of-type(6) { top: 12%; right: 7%; width: 125px; height: 125px; }
+    .flores-fondo img:nth-of-type(7) { top: 56%; right: 6%; width: 135px; height: 135px; }
+    .flores-fondo img:nth-of-type(8) { top: 78%; left: -40px; width: 145px; height: 145px; }
+    .flores-fondo img:nth-of-type(9) { top: 34%; left: 7%; width: 125px; height: 125px; }
+    .flores-fondo img:nth-of-type(10) { top: 39%; right: 6%; width: 130px; height: 130px; }
+    .flores-fondo img:nth-of-type(11) { top: 91%; right: 8%; width: 125px; height: 125px; }
+    .flores-fondo img:nth-of-type(12) { top: 61%; left: 8%; width: 120px; height: 120px; }
+
+    @media (max-width: 600px) {
+      .iniciales-fondo {
+        font-size: 125px;
+      }
+    }
+
+    body > h1,
+    body > section {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-family: 'Lobster', cursive;
+      color: white;
+      font-size: 52px;
+      text-shadow: 2px 2px 4px #1e90ff;
+      animation: aparecer 2s ease-in-out;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .recuerdos {
+      font-family: 'Pacifico', cursive;
+      color: white;
+      font-size: 32px;
+      text-shadow: 2px 2px 4px #1e90ff;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+      width: min(92%, 900px);
+      margin: 0 auto;
+    }
+
+    .recuerdos h2 {
+      grid-column: 1 / -1;
+    }
+
+    .recuerdos img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 15px;
+      transition: transform 0.5s, filter 0.5s;
+    }
+
+    @media (max-width: 700px) {
+      .recuerdos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .recuerdos img:hover {
+      transform: scale(1.1);
+      filter: brightness(1.2);
+    }
+
+    .recuerdos img:nth-of-type(6) {
+      object-position: center 10%;
+    }
+
+    .recuerdos img:nth-of-type(8) {
+      object-position: center 10%;
+    }
+
+    .recuerdos img:nth-of-type(23) {
+      object-position: center 10%;
+    }
+
+    .recuerdos img:nth-of-type(25) {
+      object-position: 35% 10%;
+    }
+
+    .recuerdos img:nth-of-type(27) {
+      object-position: center 10%;
+    }
+
+    .carta {
+      font-family: 'Dancing Script', cursive;
+      font-size: 22px;
+      margin: 30px auto;
+      width: 80%;
+      background-color: #fdf5e6;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px #1e90ff;
+    }
+
+    .carta p {
+      margin: 0;
+      white-space: pre-line;
+    }
+
+    .cursor-maquina {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      margin-left: 2px;
+      background-color: #333;
+      vertical-align: -0.15em;
+      animation: cursor 0.8s steps(1) infinite;
+    }
+
+    @keyframes cursor {
+      50% { background-color: transparent; }
+    }
+
+    .musica {
+      background-color: transparent;
+      padding: 25px;
+      border-radius: 15px;
+      margin-top: 40px;
+    }
+
+    .creditos {
+      width: min(88%, 700px);
+      margin: 45px auto 30px;
+      padding: 28px 20px;
+      background-color: rgba(253, 245, 230, 0.92);
+      border: 2px solid white;
+      border-radius: 15px;
+      box-shadow: 0 0 12px #1e90ff;
+      color: #315b70;
+    }
+
+    .creditos h2 {
+      margin: 0 0 18px;
+      font-family: 'Pacifico', cursive;
+      color: #1e90ff;
+      font-size: 34px;
+    }
+
+    .creditos-intro {
+      margin: 0 auto 20px;
+      font-size: 18px;
+    }
+
+    .razones {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      text-align: left;
+    }
+
+    .razones li {
+      padding: 12px 16px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(30, 144, 255, 0.16);
+      animation: aparecer 0.8s ease both;
+    }
+
+    .razones li:nth-child(2) { animation-delay: 0.15s; }
+    .razones li:nth-child(3) { animation-delay: 0.3s; }
+    .razones li:nth-child(4) { animation-delay: 0.45s; }
+    .razones li:nth-child(5) { animation-delay: 0.6s; }
+
+    .musica h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: 36px;
+      color: white;
+      text-shadow: 2px 2px 4px #1e90ff;
+    }
+
+    .reproductor-spotify {
+      width: min(100%, 500px);
+      height: 152px;
+      border: 0;
+      border-radius: 12px;
+    }
+
+    .boton-musica {
+      display: inline-block;
+      background-color: #1db954; /* color Spotify */
+      color: white;
+      padding: 12px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .boton-musica:hover {
+      background-color: #1ed760;
+      transform: scale(1.05);
+    }
+
+    footer {
+      margin-top: 40px;
+      margin-right: 220px;
+      text-align: right;
+      font-family: 'Lobster', cursive;
+      color: #1e90ff;
+      font-weight: bold;
+      font-size: 26px;
+      animation: brillo 3s infinite alternate;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes brillo {
+      from { text-shadow: 0 0 5px #1e90ff; }
+      to { text-shadow: 0 0 15px #1e90ff; }
+    }
+  </style>
+</head>
+<body>
+  <div class="flores-fondo" aria-hidden="true">
+    <span class="iniciales-fondo">V+M</span>
+    <img src="IMG_20260903_150628.jpg" alt="">
+    <img src="IMG_20260903_150706.jpg" alt="">
+    <img src="IMG_20260903_150736.jpg" alt="">
+    <img src="IMG_20260903_150818.jpg" alt="">
+    <img src="IMG_20260903_150628.jpg" alt="">
+    <img src="IMG_20260903_150706.jpg" alt="">
+    <img src="IMG_20260903_150736.jpg" alt="">
+    <img src="IMG_20260903_150818.jpg" alt="">
+    <img src="IMG_20260903_150736.jpg" alt="">
+    <img src="IMG_20260903_150818.jpg" alt="">
+    <img src="IMG_20260903_150628.jpg" alt="">
+    <img src="IMG_20260903_150706.jpg" alt="">
+  </div>
+
+  <h1>Una vida contigo</h1>
+
+  <section class="recuerdos">
+    <h2>Recuerdos</h2>
+    <img src="foto1.jpg" alt="Momento 1">
+    <img src="foto2.png" alt="Momento 2">
+    <img src="foto3.jpg" alt="Momento 3">
+    <img src="foto4.jpg" alt="Momento 4">
+    <img src="foto5.jpg" alt="Momento 5">
+    <img src="foto6.jpg" alt="Momento 6">
+    <img src="foto7.jpg" alt="Momento 7">
+    <img src="foto8.jpg" alt="Momento 8">
+    <img src="foto9.jpg" alt="Momento 9">
+    <img src="foto10.jpg" alt="Momento 10">
+    <img src="foto11.jpg" alt="Momento 11">
+    <img src="foto12.jpg" alt="Momento 12">
+    <img src="foto13.jpg" alt="Momento 13">
+    <img src="foto14.jpg" alt="Momento 14">
+    <img src="foto15.jpg" alt="Momento 15">
+    <img src="foto16.jpg" alt="Momento 16">
+    <img src="foto17.jpg" alt="Momento 17">
+    <img src="foto18.jpg" alt="Momento 18">
+    <img src="foto19.jpg" alt="Momento 19">
+    <img src="foto20.jpg" alt="Momento 20">
+    <img src="foto21.jpg" alt="Momento 21">
+    <img src="foto22.jpg" alt="Momento 22">
+    <img src="foto23.jpg" alt="Momento 23">
+    <img src="foto24.jpg" alt="Momento 24">
+    <img src="foto25.jpg" alt="Momento 25">
+    <img src="foto26.jpg" alt="Momento 26">
+    <img src="foto27.jpg" alt="Momento 27">
+    <img src="foto28.jpg" alt="Momento 28">
+  </section>
+
+    <section class="carta">
+     <p>Eres el amor de mi vida. Con nadie más podría imaginar ni desear compartir mi camino;
+       nadie lograría hacerme sentir ni un 1% de la calidez que me das tú. 
+       No hay momento en el que me sienta plenamente bien si no estás a mi lado. 
+       Aunque sea solo por un instante, poder verte, escucharte y sentirte me llena por completo.
+       Definitivamente eres el amor de mi vida por miles de razones. Mi amor, 
+       quiero decirte que eres lo mejor que me ha pasado en la vida, 
+       que sin ti no podría ser feliz y que mi amor por ti durará para siempre.
+        Te amo, mi princesita linda, nunca lo olvides.</p>
+  </section>
+
+  <script>
+    const carta = document.querySelector('.carta p');
+    const fraseFinal = 'Te amo, mi princesita linda, nunca lo olvides.';
+    const textoCarta = carta.textContent.replace(/\s+/g, ' ').trim().replace(
+      fraseFinal,
+      '\nTe\u00a0amo,\u00a0mi\u00a0princesita\u00a0linda,\u00a0nunca\u00a0lo\u00a0olvides.'
+    );
+    const textoVisible = document.createTextNode('');
+    const cursor = document.createElement('span');
+    let caracter = 0;
+
+    cursor.className = 'cursor-maquina';
+    carta.replaceChildren(textoVisible, cursor);
+
+    function escribirCarta() {
+      if (caracter < textoCarta.length) {
+        textoVisible.textContent += textoCarta[caracter];
+        caracter += 1;
+        setTimeout(escribirCarta, 60);
+      }
+    }
+
+    escribirCarta();
+  </script>
+
+  <section class="musica">
+    <h2>Estas canciones son para ti</h2>
+    <iframe
+      class="reproductor-spotify"
+      src="https://open.spotify.com/embed/track/19LRFzvpVwWkeMgx9o1JLS?utm_source=generator"
+      title="Reproductor de Spotify"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+    <iframe
+      class="reproductor-spotify"
+      src="https://open.spotify.com/embed/track/0X2tvdSAB6hnZ78UzuwxXQ?utm_source=generator"
+      title="Segundo reproductor de Spotify"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+    <iframe
+      class="reproductor-spotify"
+      src="https://open.spotify.com/embed/track/6q4zA7hWKFF6wsJ64DWdwU?utm_source=generator"
+      title="Tercer reproductor de Spotify"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+    <iframe
+      class="reproductor-spotify"
+      src="https://open.spotify.com/embed/track/19iUrnYyBAG5LaxT72ajsM?utm_source=generator"
+      title="Cuarto reproductor de Spotify"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+    <iframe
+      class="reproductor-spotify"
+      src="https://open.spotify.com/embed/track/3jS7jL99vwYIL1YyPOvaPS?utm_source=generator"
+      title="Quinto reproductor de Spotify"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+    <iframe
+      class="reproductor-spotify"
+      src="https://open.spotify.com/embed/track/21Ullb4TU8qMsQd0Iselng?utm_source=generator"
+      title="Sexto reproductor de Spotify"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+    <iframe
+      class="reproductor-spotify"
+      src="https://open.spotify.com/embed/track/1MyR4N6UHUARKiqCnDS2pf?utm_source=generator"
+      title="Séptimo reproductor de Spotify"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+    <iframe
+      class="reproductor-spotify"
+      src="https://open.spotify.com/embed/track/71w26UK674tLfGtJFfDSjE?utm_source=generator"
+      title="Octavo reproductor de Spotify"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+  </section>
+
+  <section class="creditos">
+    <h2>Créditos de nuestro amor</h2>
+    <p class="creditos-intro">Razones por las que quiero quedarme contigo:</p>
+    <ul class="razones">
+      <li>Porque contigo puedo ser totalmente yo y ser tonto sin que me juzgues.</li>
+      <li>Porque contigo mis días son bonitos sin importar qué pase.</li>
+      <li>Porque me das tranquilidad cuando no puedo más con el mundo.</li>
+      <li>Porque cada momento contigo es un recuerdo que jamás quiero olvidar.</li>
+      <li>Porque te elijo a ti y sé que nunca me voy a arrepentir de esta decisión.</li>
+      <li>Porque en tus abrazos encuentro la paz que no me da ningún otro lugar.</li>
+      <li>Porque tu sonrisa tiene el poder de cambiarme el ánimo al instante.</li>
+      <li>Porque valoras lo sencillo, como vernos un instante, y lo conviertes en algo enorme.</li>
+      <li>Porque escucharte y sentirte cerca me llena de una calidez reconfortante.</li>
+      <li>Porque con solo una mirada nos entendemos sin necesidad de pronunciar palabras.</li>
+      <li>Porque crees en mí y me impulsas aun cuando las cosas se ponen difíciles.</li>
+      <li>Porque haces que la rutina diaria se transforme en momentos especiales.</li>
+      <li>Porque me inspiras a querer ser una mejor versión de mí cada día.</li>
+      <li>Porque tu ternura me recuerda constantemente lo afortunado que soy de tenerte.</li>
+      <li>Porque contigo el futuro no me da temor, sino una profunda ilusión.</li>
+      <li>Porque verte feliz y cuidar de tu corazón se volvió una de mis cosas favoritas.</li>
+      <li>Porque me enseñaste lo que significa un amor auténtico y sin reservas.</li>
+      <li>Porque no importa cuán pesado sea el día, saber que estás en mi vida me devuelve la fuerza.</li>
+      <li>Porque en tus gestos y en tu forma de ser encuentro motivos para enamorarme diariamente.</li>
+      <li>Porque eres, sin duda alguna, lo mejor que me ha pasado y el amor de mi vida.</li>
+    </ul>
+  </section>
+
+  <footer>ERES SOLO MIA</footer>
+</body>
+</html>
